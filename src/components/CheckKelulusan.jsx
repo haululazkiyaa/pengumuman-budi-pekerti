@@ -15,6 +15,7 @@ const CheckKelulusan = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [startTime, setStartTime] = useState(null);
   const [timeLeft, setTimeLeft] = useState(0);
+  const [linkWA, setlinkWA] = useState("");
   const { width, height } = useWindowSize();
 
   // Fetch waktu mulai dari database
@@ -32,7 +33,21 @@ const CheckKelulusan = () => {
       }
     };
 
+    const fetchLinkWA = async () => {
+      const { data, error } = await supabase
+        .from("settings")
+        .select("link_wa")
+        .single();
+
+      if (error) {
+        toast.error("Gagal memuat link grup WA");
+      } else {
+        setStartTime(new Date(data.start_time));
+      }
+    };
+
     fetchStartTime();
+    fetchLinkWA();
   }, []);
 
   // Hitung countdown
