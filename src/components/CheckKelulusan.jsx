@@ -163,12 +163,13 @@ const CheckKelulusan = () => {
           />
         </div>
         <h1 className="text-xl font-bold mb-3">
-          PENGUMUMAN KELULUSAN <br /> CALON PENGURUS TIM BUDI PEKERTI 2025
+          PENGUMUMAN KELULUSAN <br />
+          Calon Pengurus Tim Budi Pekerti 2025
         </h1>
         {!result && (
           <h2 className="text-gray-600 font-normal">
-            Selamat datang Generasi Juara! Silakan cek kelulusan Anda di bawah
-            ini.
+            Selamat datang calon pengurus Tim Budi Pekerti tahun 2025! Silakan
+            cek kelulusan Anda di bawah ini.
           </h2>
         )}
       </header>
@@ -211,7 +212,7 @@ const CheckKelulusan = () => {
       {result && (
         <div className="mt-5 text-left inline-block bg-gray-50 p-5 rounded-lg shadow-md space-y-1">
           <h3 className="text-xl font-bold text-center">HASIL KELULUSAN</h3>
-
+          <br />
           <p>
             <strong>Nama:</strong> {result.nama}
           </p>
@@ -256,19 +257,26 @@ const CheckKelulusan = () => {
             </>
           )}
 
-          {/* <p>Silakan pilih salah satu opsi di bawah:</p>
-          <button
-            onClick={() => handleConfirmation(true)}
-            className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 mr-2"
-          >
-            TERIMA
-          </button>
-          <button
+          <div className="text-center mt-5">
+            <br />
+
+            <p>Silahkan Join ke Grup Pengurus 2025:</p>
+            <button
+              onClick={() => {
+                handleConfirmation(true);
+                window.location.href = "https://budipekerti.vercel.app/";
+              }}
+              className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 mr-2"
+            >
+              Masuk Grup Whatsapp
+            </button>
+            {/* <button
             onClick={() => handleConfirmation(false)}
             className="py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600"
           >
             MUNDUR
           </button> */}
+          </div>
         </div>
       )}
 
