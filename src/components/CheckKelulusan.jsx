@@ -42,7 +42,7 @@ const CheckKelulusan = () => {
       if (error) {
         toast.error("Gagal memuat link grup WA");
       } else {
-        setStartTime(new Date(data.start_time));
+        setlinkWA(data.link_wa);
       }
     };
 
@@ -279,7 +279,7 @@ const CheckKelulusan = () => {
             <button
               onClick={() => {
                 handleConfirmation(true);
-                window.location.href = "https://budipekerti.vercel.app/";
+                window.location.href = linkWA;
               }}
               className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 mr-2"
             >
