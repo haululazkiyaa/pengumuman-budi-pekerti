@@ -112,25 +112,34 @@ const CheckKelulusan = () => {
       const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
       return (
-        <div className="flex items-center justify-center space-x-5">
-          <div className="bg-gray-200 p-5 rounded-lg">
-            <h1 className="text-2xl">{days}</h1>
-            <p className="text-lg">hari</p>
-          </div>
+        <div>
+          <div className="flex items-center justify-center space-x-5">
+            <div className="bg-gray-200 p-5 rounded-lg">
+              <h1 className="text-2xl">{days}</h1>
+              <p className="text-lg">hari</p>
+            </div>
 
-          <div className="bg-gray-200 p-5 rounded-lg">
-            <h1 className="text-2xl">{hours}</h1>
-            <p className="text-lg">jam</p>
-          </div>
+            <div className="bg-gray-200 p-5 rounded-lg">
+              <h1 className="text-2xl">{hours}</h1>
+              <p className="text-lg">jam</p>
+            </div>
 
-          <div className="bg-gray-200 p-5 rounded-lg">
-            <h1 className="text-2xl">{minutes}</h1>
-            <p className="text-lg">menit</p>
-          </div>
+            <div className="bg-gray-200 p-5 rounded-lg">
+              <h1 className="text-2xl">{minutes}</h1>
+              <p className="text-lg">menit</p>
+            </div>
 
-          <div className="bg-gray-200 p-5 rounded-lg">
-            <h1 className="text-2xl">{seconds}</h1>
-            <p className="text-lg">detik</p>
+            <div className="bg-gray-200 p-5 rounded-lg">
+              <h1 className="text-2xl">{seconds}</h1>
+              <p className="text-lg">detik</p>
+            </div>
+          </div>
+          <div className="flex justify-center items-center mt-5">
+            <img
+              src="https://masulyablog.sirv.com/5c.jpg"
+              alt="pesan ketua"
+              className="h-72"
+            />
           </div>
         </div>
       );
@@ -205,9 +214,15 @@ const CheckKelulusan = () => {
           PENGUMUMAN KELULUSAN <br />
           PENGURUS TIM BUDI PEKERTI 2025
         </h1>
-        {!result && (
+        {timeLeft < 0 ? (
+          !result && (
+            <h2 className="text-gray-600 font-normal">
+              Selamat datang! Silakan cek kelulusan Anda di bawah ini.
+            </h2>
+          )
+        ) : (
           <h2 className="text-gray-600 font-normal">
-            Selamat datang! Silakan cek kelulusan Anda di bawah ini.
+            Pengumuman kelulusan akan dibuka pada:
           </h2>
         )}
       </header>
