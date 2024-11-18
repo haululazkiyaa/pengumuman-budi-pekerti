@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import Confetti from "react-confetti";
 import ReCAPTCHA from "react-google-recaptcha";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import supabase from "../services/supabaseClient";
 import { toast } from "react-toastify";
 import { useWindowSize } from "@uidotdev/usehooks";
@@ -138,33 +138,51 @@ const CheckKelulusan = () => {
     return null;
   };
 
-  const handleConfirmation = (confirm) => {
-    Swal.fire({
-      title: confirm ? "Terima?" : "Undur Diri?",
-      text: "Kesempatan anda hanya satu kali, apakah anda yakin?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: confirm ? "Ya Terima!" : "Ya, Undur Diri!",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        const { error } = await supabase
-          .from("kelulusan")
-          .update({ konfirmasi_kesediaan: confirm })
-          .match({ nim: nim });
+  const handleConfirmation = async (confirm) => {
+    // Swal.fire({
+    //   title: confirm ? "Terima?" : "Undur Diri?",
+    //   text: "Kesempatan anda hanya satu kali, apakah anda yakin?",
+    //   icon: "warning",
+    //   showCancelButton: true,
+    //   confirmButtonColor: "#3085d6",
+    //   cancelButtonColor: "#d33",
+    //   confirmButtonText: confirm ? "Ya Terima!" : "Ya, Undur Diri!",
+    // }).then(async (result) => {
+    //   if (result.isConfirmed) {
+    //     const { error } = await supabase
+    //       .from("kelulusan")
+    //       .update({ konfirmasi_kesediaan: confirm })
+    //       .match({ nim: nim });
 
-        if (!error) {
-          Swal.fire({
-            title: "Konfirmasi Berhasil!",
-            text: "Terima kasih telah melakukan konfirmasi, kami akan segera menyebarkan surat resmi yang lolos sebagai pengurus!.",
-            icon: "success",
-          });
-        } else {
-          toast.error("Terjadi kesalahan saat melakukan konfirmasi");
-        }
-      }
-    });
+    //     if (!error) {
+    //       Swal.fire({
+    //         title: "Konfirmasi Berhasil!",
+    //         text: "Terima kasih telah melakukan konfirmasi, kami akan segera menyebarkan surat resmi yang lolos sebagai pengurus!.",
+    //         icon: "success",
+    //       });
+    //     } else {
+    //       toast.error("Terjadi kesalahan saat melakukan konfirmasi");
+    //     }
+    //   }
+    // });
+    const { error } = await supabase
+      .from("kelulusan")
+      .update({ konfirmasi_kesediaan: confirm })
+      .match({ nim: nim });
+
+    if (!error) {
+      // Swal.fire({
+      //   title: "Konfirmasi Berhasil!",
+      //   text: "Terima kasih telah melakukan konfirmasi, kami akan segera menyebarkan surat resmi yang lolos sebagai pengurus!.",
+      //   icon: "success",
+      // });
+      toast.loading("Membuka link whatsapp...");
+      setTimeout(() => {
+        window.location.href = linkWA;
+      }, 2000);
+    } else {
+      toast.error("Terjadi kesalahan saat melakukan konfirmasi");
+    }
   };
 
   useEffect(() => {
@@ -286,7 +304,6 @@ const CheckKelulusan = () => {
               <button
                 onClick={() => {
                   handleConfirmation(true);
-                  window.location.href = linkWA;
                 }}
                 className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 mr-2"
               >
