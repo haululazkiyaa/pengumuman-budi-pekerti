@@ -167,6 +167,12 @@ const CheckKelulusan = () => {
     });
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 5000);
+  }, [showConfetti]);
+
   return (
     <div className="font-sans p-5 text-center">
       <header className="mb-3">
@@ -257,45 +263,53 @@ const CheckKelulusan = () => {
             <strong>Bersedia Pindah Posisi:</strong>{" "}
             {result.bersedia_pindah ? "Ya" : "Tidak"}
           </p>
+          <div>
+            <div className="my-5">
+              {result.status_diterima ? (
+                <p className="font-bold text-lg text-green-600 text-center">
+                  Selamat! Kamu diterima di posisi:
+                  <br />
+                  {result.status_diterima}
+                </p>
+              ) : (
+                <>
+                  <p className="font-bold text-red-500">
+                    Mohon maaf, pilihan Anda penuh.
+                  </p>
+                  <p>Divisi ditawarkan: {result.divisi_ditawarkan || "-"}</p>
+                </>
+              )}
+            </div>
 
-          {result.status_diterima ? (
-            <p className="font-bold text-lg text-green-600 text-center my-5">
-              Selamat! Kamu diterima di posisi:
-              <br />
-              {result.status_diterima}
-            </p>
-          ) : (
-            <>
-              <p className="font-bold text-red-500">
-                Mohon maaf, pilihan Anda penuh.
-              </p>
-              <p>Divisi ditawarkan: {result.divisi_ditawarkan || "-"}</p>
-            </>
-          )}
-
-          <div className="text-center">
-            <p className="mb-2">Silahkan Join ke Grup Pengurus 2025:</p>
-            <button
-              onClick={() => {
-                handleConfirmation(true);
-                window.location.href = linkWA;
-              }}
-              className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 mr-2"
-            >
-              Masuk Grup Whatsapp
-            </button>
-            {/* <button
+            <div className="text-center">
+              <p className="mb-2">Silahkan Join ke Grup Pengurus 2025:</p>
+              <button
+                onClick={() => {
+                  handleConfirmation(true);
+                  window.location.href = linkWA;
+                }}
+                className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 mr-2"
+              >
+                Masuk Grup Whatsapp
+              </button>
+              {/* <button
             onClick={() => handleConfirmation(false)}
             className="py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600"
           >
             MUNDUR
           </button> */}
+            </div>
           </div>
         </div>
       )}
 
       {showConfetti && (
-        <Confetti width={width} height={height} tweenDuration={500} />
+        <Confetti
+          width={width}
+          height={height}
+          numberOfPieces={500}
+          recycle={false}
+        />
       )}
     </div>
   );
