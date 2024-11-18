@@ -177,14 +177,13 @@ const CheckKelulusan = () => {
             className="h-12"
           />
         </div>
-        <h1 className="text-xl font-bold mb-3">
+        <h1 className="text-lg font-bold mb-3">
           PENGUMUMAN KELULUSAN <br />
-          Calon Pengurus Tim Budi Pekerti 2025
+          CALON PENGURUS TIM BUDI PEKERTI 2025
         </h1>
         {!result && (
           <h2 className="text-gray-600 font-normal">
-            Selamat datang calon pengurus Tim Budi Pekerti tahun 2025! Silakan
-            cek kelulusan Anda di bawah ini.
+            Selamat datang! Silakan cek kelulusan Anda di bawah ini.
           </h2>
         )}
       </header>
@@ -226,8 +225,10 @@ const CheckKelulusan = () => {
 
       {result && (
         <div className="mt-5 text-left inline-block bg-gray-50 p-5 rounded-lg shadow-md space-y-1">
-          <h3 className="text-xl font-bold text-center">HASIL KELULUSAN</h3>
-          <br />
+          <h3 className="text-lg font-bold text-center mb-2">
+            HASIL KELULUSAN
+          </h3>
+
           <p>
             <strong>Nama:</strong> {result.nama}
           </p>
@@ -256,9 +257,9 @@ const CheckKelulusan = () => {
             <strong>Bersedia Pindah Posisi:</strong>{" "}
             {result.bersedia_pindah ? "Ya" : "Tidak"}
           </p>
-          <br />
+
           {result.status_diterima ? (
-            <p className="font-bold text-xl text-green-600 text-center">
+            <p className="font-bold text-lg text-green-600 text-center my-5">
               Selamat! Kamu diterima di posisi:
               <br />
               {result.status_diterima}
@@ -272,10 +273,8 @@ const CheckKelulusan = () => {
             </>
           )}
 
-          <div className="text-center mt-5">
-            <br />
-
-            <p>Silahkan Join ke Grup Pengurus 2025:</p>
+          <div className="text-center">
+            <p className="mb-2">Silahkan Join ke Grup Pengurus 2025:</p>
             <button
               onClick={() => {
                 handleConfirmation(true);
