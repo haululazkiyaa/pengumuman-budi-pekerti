@@ -159,9 +159,10 @@ const CheckKelulusan = () => {
           <img
             src="https://budipekerti.vercel.app/images/logo.png"
             alt="Logo Budi Pekerti x TelU"
+            className="h-12"
           />
         </div>
-        <h1 className="text-2xl font-bold mb-3">
+        <h1 className="text-xl font-bold mb-3">
           PENGUMUMAN KELULUSAN <br /> CALON PENGURUS TIM BUDI PEKERTI 2025
         </h1>
         {!result && (
@@ -208,8 +209,8 @@ const CheckKelulusan = () => {
       ) : null}
 
       {result && (
-        <div className="mt-5 text-left inline-block bg-gray-50 p-5 rounded-lg shadow-md space-y-2">
-          <h3 className="text-2xl font-bold text-center">HASIL KELULUSAN</h3>
+        <div className="mt-5 text-left inline-block bg-gray-50 p-5 rounded-lg shadow-md space-y-1">
+          <h3 className="text-xl font-bold text-center">HASIL KELULUSAN</h3>
 
           <p>
             <strong>Nama:</strong> {result.nama}
@@ -239,10 +240,10 @@ const CheckKelulusan = () => {
             <strong>Bersedia Pindah Posisi:</strong>{" "}
             {result.bersedia_pindah ? "Ya" : "Tidak"}
           </p>
-
+          <br />
           {result.status_diterima ? (
-            <p className="font-bold text-2xl text-green-500 text-center">
-              Selamat! Anda diterima di posisi:
+            <p className="font-bold text-xl text-green-600 text-center">
+              Selamat! Kamu diterima di posisi:
               <br />
               {result.status_diterima}
             </p>
@@ -271,7 +272,9 @@ const CheckKelulusan = () => {
         </div>
       )}
 
-      {showConfetti && <Confetti width={width} height={height} />}
+      {showConfetti && (
+        <Confetti width={width} height={height} tweenDuration={500} />
+      )}
     </div>
   );
 };
