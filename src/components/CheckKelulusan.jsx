@@ -185,7 +185,7 @@ const CheckKelulusan = () => {
         </div>
         <h1 className="text-lg font-bold mb-3">
           PENGUMUMAN KELULUSAN <br />
-          CALON PENGURUS TIM BUDI PEKERTI 2025
+          PENGURUS TIM BUDI PEKERTI 2025
         </h1>
         {!result && (
           <h2 className="text-gray-600 font-normal">
